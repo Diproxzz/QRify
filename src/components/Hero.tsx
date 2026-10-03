@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Sparkles, ShieldCheck, Download, Layers } from 'lucide-react';
+import { ShieldCheck, Download, Layers } from 'lucide-react';
 import { animateFloatingBlobs, animatePageEntrance } from '../lib/animeHelper';
 
 export const Hero: React.FC = () => {
@@ -27,11 +27,6 @@ export const Hero: React.FC = () => {
       />
 
       <div className="max-w-4xl mx-auto px-4 text-center">
-        {/* Subtle Pill Tag */}
-        <div className="anime-entrance inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-brand-950/60 border border-brand-200 dark:border-brand-800/80 text-brand-700 dark:text-brand-300 text-xs font-semibold shadow-sm mb-4">
-          <Sparkles className="w-3.5 h-3.5 text-brand-500" />
-          <span>Next-Generation Studio • 36 Designer Templates</span>
-        </div>
 
         {/* Hero Title */}
         <h1 className="anime-entrance font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
