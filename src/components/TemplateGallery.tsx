@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import {
-  Sparkles,
+  LayoutGrid,
   Briefcase,
   GraduationCap,
   Utensils,
@@ -19,7 +19,7 @@ import { SceneRenderer } from './SceneRenderer';
 import { animateTabIndicator } from '../lib/animeHelper';
 
 const categoryIcons: Record<string, React.FC<{ className?: string }>> = {
-  Sparkles,
+  LayoutGrid,
   Briefcase,
   GraduationCap,
   Utensils,
@@ -110,7 +110,7 @@ export const TemplateGallery: React.FC<TemplateGalleryProps> = ({
           className="relative flex items-center space-x-1 overflow-x-auto pb-2 scrollbar-none border-b border-slate-100 dark:border-slate-800"
         >
           {SCENE_CATEGORIES.map((cat) => {
-            const Icon = categoryIcons[cat.iconName] || Sparkles;
+            const Icon = categoryIcons[cat.iconName] || LayoutGrid;
             const isActive = activeCategory === cat.id;
             return (
               <button

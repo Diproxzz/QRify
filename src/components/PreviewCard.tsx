@@ -8,7 +8,6 @@ import {
   ShieldCheck,
   Palette,
   Type,
-  Sparkles,
 } from 'lucide-react';
 import type { SceneTemplate, ScenePalette, LogoConfig, ExportResolution, ScannabilityReport } from '../types/qr';
 import { SceneRenderer } from './SceneRenderer';

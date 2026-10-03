@@ -9,7 +9,6 @@ import {
   Clipboard,
   Check,
   AlertCircle,
-  Sparkles,
 } from 'lucide-react';
 import type { ContentType, EmailData, PhoneData, VCardData, WifiData } from '../types/qr';
 import { encodeContent } from '../lib/contentEncoders';

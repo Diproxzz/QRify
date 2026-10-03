@@ -6,7 +6,6 @@ import {
   FileCode,
   FileText,
   ImageIcon,
-  Sparkles,
 } from 'lucide-react';
 import type { ExportResolution, ExportSettings, SceneTemplate } from '../types/qr';
 import { downloadScenePng, downloadSceneSvg, downloadScenePdf, copySceneToClipboard } from '../lib/exportUtils';
@@ -87,7 +86,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
 
         <div className="mb-5">
           <div className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-md bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 text-xs font-bold uppercase mb-2">
-            <Sparkles className="w-3.5 h-3.5" />
+            <Download className="w-3.5 h-3.5" />
             <span>Lossless Scene Export</span>
           </div>
           <h3 className="text-xl font-display font-bold text-slate-900 dark:text-white">

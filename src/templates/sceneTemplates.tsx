@@ -9,7 +9,7 @@ export interface CategoryMeta {
 }
 
 export const SCENE_CATEGORIES: CategoryMeta[] = [
-  { id: 'all', name: 'All Scenes', iconName: 'Sparkles' },
+  { id: 'all', name: 'All Scenes', iconName: 'LayoutGrid' },
   { id: 'business', name: 'Business', iconName: 'Briefcase' },
   { id: 'education', name: 'Education', iconName: 'GraduationCap' },
   { id: 'food', name: 'Food & Cafe', iconName: 'Utensils' },

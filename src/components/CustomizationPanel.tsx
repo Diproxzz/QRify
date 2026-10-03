@@ -9,7 +9,6 @@ import {
   Trash2,
   AlertTriangle,
   CheckCircle2,
-  Sparkles,
   Layers,
 } from 'lucide-react';
 import type {
