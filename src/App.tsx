@@ -9,7 +9,7 @@ import { ExportModal } from './components/ExportModal';
 import { HistoryDrawer } from './components/HistoryDrawer';
 import { ShortcutsModal } from './components/ShortcutsModal';
 import { Toast, ToastMessage } from './components/Toast';
-import { QrCode, ExternalLink } from 'lucide-react';
+import { QrCode, ExternalLink, Eye } from 'lucide-react';
 
 import { ALL_SCENE_TEMPLATES } from './templates/sceneTemplates';
 import type {
@@ -241,7 +241,7 @@ export const App: React.FC = () => {
           </div>
 
           {/* Right Column: Sticky Live Scene Preview Card */}
-          <div className="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-20">
+          <div id="preview-card-section" className="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-20">
             <PreviewCard
               template={currentTemplate}
               qrSvgHtml={qrSvgHtml}
@@ -260,6 +260,23 @@ export const App: React.FC = () => {
           </div>
         </div>
       </main>
+
+      {/* Floating Quick Action Button for Mobile Users */}
+      <div className="lg:hidden fixed bottom-5 right-5 z-40 animate-in fade-in zoom-in-95 duration-200">
+        <button
+          onClick={() => {
+            const previewEl = document.getElementById('preview-card-section');
+            if (previewEl) {
+              previewEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          aria-label="Scroll to live preview"
+          className="flex items-center space-x-2 px-4 py-2.5 rounded-full bg-brand-600 hover:bg-brand-700 text-white shadow-xl shadow-brand-600/35 font-semibold text-xs border border-white/20 active:scale-95 transition-all backdrop-blur-md"
+        >
+          <Eye className="w-4 h-4" />
+          <span>Live Scene</span>
+        </button>
+      </div>
 
       {/* Modals & Overlays */}
       <ExportModal
