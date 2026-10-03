@@ -9,10 +9,10 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Executive Desk Card',
     description: 'A premium vCard laid upon an executive oak desk with fountain pen.',
     viewBox: [420, 500],
-    slot: { x: 105, y: 120, width: 210, height: 210, cornerRadius: 14, rotate: -2 },
+    slot: { x: 110, y: 115, width: 200, height: 200, cornerRadius: 14, rotate: -1 },
     textSlots: [
-      { id: 'header', x: 210, y: 80, defaultText: 'EXECUTIVE CONTACT', fontSize: 12, align: 'middle', fontWeight: 'bold' },
-      { id: 'cta', x: 210, y: 360, defaultText: 'Scan to Save Contact', fontSize: 13, align: 'middle', fontWeight: 600 },
+      { id: 'header', x: 210, y: 88, defaultText: 'EXECUTIVE CONTACT', fontSize: 12, align: 'middle', fontWeight: 'bold', color: '#0f172a' },
+      { id: 'cta', x: 210, y: 365, defaultText: 'Scan to Save Contact', fontSize: 12.5, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#0f172a', secondary: '#334155', accent: '#0284c7', background: '#f8fafc', ink: '#020617' },
     qrStyle: { dotsType: 'square', cornersSquareType: 'square', cornersDotType: 'square', dotsColor: '#0f172a', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -20,17 +20,21 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     renderSvgContent: (palette) => (
       <g>
         {/* Desk Surface texture lines */}
-        <line x1="20" y1="40" x2="400" y2="40" stroke={palette.secondary} strokeWidth="1.5" opacity="0.15" />
-        <line x1="20" y1="460" x2="400" y2="460" stroke={palette.secondary} strokeWidth="1.5" opacity="0.15" />
-        {/* Shadow under tilted card */}
-        <rect x="98" y="102" width="235" height="280" rx="20" transform="rotate(-2 210 240)" fill="#000000" opacity="0.1" />
-        {/* Tilted Card */}
-        <rect x="92" y="96" width="235" height="280" rx="20" transform="rotate(-2 210 240)" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        <line x1="20" y1="35" x2="400" y2="35" stroke={palette.secondary} strokeWidth="1.5" opacity="0.15" />
+        <line x1="20" y1="465" x2="400" y2="465" stroke={palette.secondary} strokeWidth="1.5" opacity="0.15" />
+        {/* Soft shadow under card */}
+        <rect x="85" y="55" width="250" height="380" rx="22" transform="rotate(-1 210 245)" fill="#000000" opacity="0.08" />
+        {/* Main Executive Card - fully encloses header, QR slot and CTA */}
+        <rect x="80" y="50" width="250" height="380" rx="20" transform="rotate(-1 210 240)" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        {/* Accent line under header */}
+        <line x1="150" y1="98" x2="270" y2="98" stroke={palette.accent} strokeWidth="2.5" strokeLinecap="round" />
+        {/* CTA Button Pill inside card */}
+        <rect x="105" y="342" width="210" height="38" rx="19" fill={palette.primary} />
         {/* Brass Fountain Pen on right */}
-        <path d="M 350 70 L 362 82 L 322 360 L 312 375 L 310 360 Z" fill="#d97706" stroke={palette.primary} strokeWidth="3" />
-        <polygon points="312,375 306,395 318,382" fill="#0f172a" stroke={palette.primary} strokeWidth="2" />
+        <path d="M 355 60 L 367 72 L 327 360 L 317 375 L 315 360 Z" fill="#d97706" stroke={palette.primary} strokeWidth="3" />
+        <polygon points="317,375 311,395 323,382" fill="#0f172a" stroke={palette.primary} strokeWidth="2" />
         {/* Clip and ruler accent on left */}
-        <rect x="45" y="150" width="18" height="120" rx="4" fill="#cbd5e1" stroke={palette.primary} strokeWidth="3" />
+        <rect x="42" y="150" width="18" height="120" rx="4" fill="#cbd5e1" stroke={palette.primary} strokeWidth="3" />
       </g>
     ),
   },
@@ -41,9 +45,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Leather Attache Case',
     description: 'An executive leather briefcase with the QR badge on the flap.',
     viewBox: [420, 500],
-    slot: { x: 110, y: 150, width: 200, height: 200, cornerRadius: 18 },
+    slot: { x: 110, y: 145, width: 200, height: 200, cornerRadius: 18 },
     textSlots: [
-      { id: 'cta', x: 210, y: 405, defaultText: 'Scan for Credentials', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 210, y: 406, defaultText: 'Scan for Credentials', fontSize: 12, align: 'middle', fontWeight: 'bold', color: '#fef3c7' },
     ],
     palette: { primary: '#451a03', secondary: '#78350f', accent: '#d97706', background: '#fef3c7', ink: '#451a03' },
     qrStyle: { dotsType: 'classy', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#451a03', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -51,21 +55,23 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     renderSvgContent: (palette) => (
       <g>
         {/* Briefcase Handle */}
-        <path d="M 160 90 C 160 40 260 40 260 90" fill="none" stroke={palette.primary} strokeWidth="16" strokeLinecap="round" />
-        <path d="M 160 90 C 160 46 260 46 260 90" fill="none" stroke="#d97706" strokeWidth="6" strokeLinecap="round" />
+        <path d="M 160 85 C 160 35 260 35 260 85" fill="none" stroke={palette.primary} strokeWidth="16" strokeLinecap="round" />
+        <path d="M 160 85 C 160 41 260 41 260 85" fill="none" stroke="#d97706" strokeWidth="6" strokeLinecap="round" />
         {/* Handle Chrome Mounts */}
-        <rect x="150" y="80" width="20" height="24" rx="4" fill="#cbd5e1" stroke={palette.primary} strokeWidth="4" />
-        <rect x="250" y="80" width="20" height="24" rx="4" fill="#cbd5e1" stroke={palette.primary} strokeWidth="4" />
+        <rect x="150" y="75" width="20" height="24" rx="4" fill="#cbd5e1" stroke={palette.primary} strokeWidth="4" />
+        <rect x="250" y="75" width="20" height="24" rx="4" fill="#cbd5e1" stroke={palette.primary} strokeWidth="4" />
         {/* Briefcase Main Leather Body */}
-        <rect x="50" y="95" width="320" height="340" rx="28" fill={palette.secondary} stroke={palette.primary} strokeWidth="7" />
+        <rect x="50" y="90" width="320" height="350" rx="28" fill={palette.secondary} stroke={palette.primary} strokeWidth="7" />
         {/* Front Flap */}
-        <path d="M 50 95 L 370 95 L 370 260 L 210 295 L 50 260 Z" fill={palette.primary} opacity="0.3" />
+        <path d="M 50 90 L 370 90 L 370 250 L 210 285 L 50 250 Z" fill={palette.primary} opacity="0.3" />
         {/* Leather Stitching Dash Lines */}
-        <rect x="62" y="107" width="296" height="316" rx="20" fill="none" stroke="#fde68a" strokeWidth="2" strokeDasharray="6 6" />
+        <rect x="62" y="102" width="296" height="326" rx="20" fill="none" stroke="#fde68a" strokeWidth="2" strokeDasharray="6 6" />
         {/* Center Plaque Badge for QR */}
-        <rect x="95" y="135" width="230" height="230" rx="22" fill="#ffffff" stroke={palette.primary} strokeWidth="6" />
+        <rect x="95" y="130" width="230" height="230" rx="22" fill="#ffffff" stroke={palette.primary} strokeWidth="6" />
         {/* Brass Clasp at Bottom */}
-        <rect x="185" y="365" width="50" height="24" rx="6" fill="#f59e0b" stroke={palette.primary} strokeWidth="3" />
+        <rect x="185" y="360" width="50" height="18" rx="5" fill="#f59e0b" stroke={palette.primary} strokeWidth="3" />
+        {/* CTA Banner Pill */}
+        <rect x="100" y="386" width="220" height="32" rx="16" fill="#291204" stroke="#d97706" strokeWidth="2" />
       </g>
     ),
   },
@@ -78,7 +84,7 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     viewBox: [440, 480],
     slot: { x: 120, y: 70, width: 200, height: 200, cornerRadius: 10 },
     textSlots: [
-      { id: 'cta', x: 220, y: 305, defaultText: 'Scan to Open Web Portal', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 220, y: 300, defaultText: 'Scan to Open Web Portal', fontSize: 12, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#1e293b', secondary: '#475569', accent: '#3b82f6', background: '#f8fafc', ink: '#0f172a' },
     qrStyle: { dotsType: 'rounded', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#1e293b', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -96,10 +102,10 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
         <circle cx="97" cy="62" r="3.5" fill="#ef4444" />
         <circle cx="109" cy="62" r="3.5" fill="#f59e0b" />
         <circle cx="121" cy="62" r="3.5" fill="#10b981" />
+        {/* CTA Button Pill on bottom of screen */}
+        <rect x="105" y="282" width="230" height="30" rx="15" fill={palette.primary} />
         {/* Laptop Base / Keyboard Chassis */}
         <polygon points="30,340 410,340 380,380 60,380" fill="#cbd5e1" stroke={palette.primary} strokeWidth="6" />
-        {/* Trackpad Indentation */}
-        <rect x="180" y="348" width="80" height="24" rx="4" fill="#94a3b8" opacity="0.6" stroke={palette.primary} strokeWidth="1.5" />
       </g>
     ),
   },
@@ -110,10 +116,10 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Conference Pass Badge',
     description: 'An event VIP lanyard badge on a woven strap with clip.',
     viewBox: [400, 520],
-    slot: { x: 100, y: 170, width: 200, height: 200, cornerRadius: 16 },
+    slot: { x: 100, y: 180, width: 200, height: 200, cornerRadius: 16 },
     textSlots: [
-      { id: 'header', x: 200, y: 145, defaultText: 'VIP ALL-ACCESS PASS', fontSize: 12, align: 'middle', fontWeight: 'bold' },
-      { id: 'cta', x: 200, y: 405, defaultText: 'Scan for Conference Hub', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'header', x: 200, y: 162, defaultText: 'VIP ALL-ACCESS PASS', fontSize: 11.5, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
+      { id: 'cta', x: 200, y: 422, defaultText: 'Scan for Conference Hub', fontSize: 12, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#1e1b4b', secondary: '#4338ca', accent: '#f59e0b', background: '#e0e7ff', ink: '#1e1b4b' },
     qrStyle: { dotsType: 'classy-rounded', cornersSquareType: 'dot', cornersDotType: 'dot', dotsColor: '#1e1b4b', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -121,18 +127,20 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     renderSvgContent: (palette) => (
       <g>
         {/* Woven Lanyard Straps entering from top */}
-        <path d="M 160 0 L 195 90" stroke={palette.secondary} strokeWidth="24" fill="none" />
-        <path d="M 240 0 L 205 90" stroke={palette.secondary} strokeWidth="24" fill="none" />
-        <path d="M 160 0 L 195 90" stroke="#ffffff" strokeWidth="4" strokeDasharray="6 6" fill="none" opacity="0.5" />
+        <path d="M 160 0 L 195 85" stroke={palette.secondary} strokeWidth="22" fill="none" />
+        <path d="M 240 0 L 205 85" stroke={palette.secondary} strokeWidth="22" fill="none" />
+        <path d="M 160 0 L 195 85" stroke="#ffffff" strokeWidth="4" strokeDasharray="6 6" fill="none" opacity="0.5" />
         {/* Metal Swivel Lobster Clip */}
-        <ellipse cx="200" cy="98" rx="14" ry="10" fill="#94a3b8" stroke={palette.primary} strokeWidth="4" />
-        <rect x="194" y="104" width="12" height="22" rx="4" fill="#cbd5e1" stroke={palette.primary} strokeWidth="3" />
-        {/* Badge Plastic Pouch Header Slot */}
-        <rect x="70" y="120" width="260" height="330" rx="20" fill="#ffffff" stroke={palette.primary} strokeWidth="6" />
+        <ellipse cx="200" cy="92" rx="14" ry="10" fill="#94a3b8" stroke={palette.primary} strokeWidth="4" />
+        <rect x="194" y="98" width="12" height="20" rx="4" fill="#cbd5e1" stroke={palette.primary} strokeWidth="3" />
+        {/* Badge Plastic Pouch */}
+        <rect x="70" y="112" width="260" height="340" rx="20" fill="#ffffff" stroke={palette.primary} strokeWidth="6" />
         {/* Lanyard Hole Punch Slot */}
-        <rect x="175" y="128" width="50" height="10" rx="5" fill="#f1f5f9" stroke={palette.primary} strokeWidth="3" />
-        {/* Badge Accent Header Banner */}
-        <rect x="80" y="148" width="240" height="28" rx="8" fill={palette.primary} />
+        <rect x="175" y="120" width="50" height="11" rx="5.5" fill="#f1f5f9" stroke={palette.primary} strokeWidth="3" />
+        {/* Badge Accent Header Banner with clean separation */}
+        <rect x="80" y="142" width="240" height="30" rx="8" fill={palette.primary} />
+        {/* CTA Bottom Pill Badge */}
+        <rect x="95" y="402" width="210" height="34" rx="17" fill={palette.secondary} />
       </g>
     ),
   },
@@ -146,8 +154,8 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     viewBox: [440, 480],
     slot: { x: 235, y: 110, width: 170, height: 170, cornerRadius: 10 },
     textSlots: [
-      { id: 'header', x: 120, y: 150, defaultText: 'CHAPTER 04', fontSize: 13, align: 'middle', fontWeight: 'bold' },
-      { id: 'cta', x: 320, y: 310, defaultText: 'Scan for Study Guide', fontSize: 12, align: 'middle', fontWeight: 'bold' },
+      { id: 'header', x: 120, y: 150, defaultText: 'CHAPTER 04', fontSize: 13, align: 'middle', fontWeight: 'bold', color: '#1e3a8a' },
+      { id: 'cta', x: 320, y: 315, defaultText: 'Scan for Study Guide', fontSize: 11.5, align: 'middle', fontWeight: 'bold', color: '#1e3a8a' },
     ],
     palette: { primary: '#1e3a8a', secondary: '#3b82f6', accent: '#f59e0b', background: '#eff6ff', ink: '#172554' },
     qrStyle: { dotsType: 'classy', cornersSquareType: 'square', cornersDotType: 'dot', dotsColor: '#1e3a8a', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -177,10 +185,10 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Graduation Mortarboard',
     description: 'Academic graduation cap with gold tassel and hanging diploma card.',
     viewBox: [420, 500],
-    slot: { x: 110, y: 220, width: 200, height: 200, cornerRadius: 16 },
+    slot: { x: 110, y: 195, width: 200, height: 200, cornerRadius: 16 },
     textSlots: [
-      { id: 'header', x: 210, y: 195, defaultText: 'CLASS OF 2026', fontSize: 13, align: 'middle', fontWeight: 'bold' },
-      { id: 'cta', x: 210, y: 450, defaultText: 'Scan for Commencement', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'header', x: 210, y: 172, defaultText: 'CLASS OF 2026', fontSize: 12, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
+      { id: 'cta', x: 210, y: 428, defaultText: 'Scan for Commencement', fontSize: 12, align: 'middle', fontWeight: 'bold', color: '#0f172a' },
     ],
     palette: { primary: '#0f172a', secondary: '#334155', accent: '#f59e0b', background: '#f8fafc', ink: '#020617' },
     qrStyle: { dotsType: 'rounded', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#0f172a', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -188,18 +196,20 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     renderSvgContent: (palette) => (
       <g>
         {/* Skull Cap Base */}
-        <ellipse cx="210" cy="150" rx="90" ry="40" fill={palette.secondary} stroke={palette.primary} strokeWidth="6" />
+        <ellipse cx="210" cy="130" rx="90" ry="36" fill={palette.secondary} stroke={palette.primary} strokeWidth="5.5" />
         {/* Diamond Mortarboard Top */}
-        <polygon points="210,50 380,105 210,160 40,105" fill={palette.primary} stroke={palette.ink} strokeWidth="6" />
+        <polygon points="210,40 380,95 210,150 40,95" fill={palette.primary} stroke={palette.ink} strokeWidth="6" />
         {/* Center Button */}
-        <ellipse cx="210" cy="105" rx="10" ry="7" fill={palette.accent} stroke={palette.primary} strokeWidth="3" />
-        {/* Hanging Tassel */}
-        <path d="M 210 105 Q 290 120 310 180" fill="none" stroke={palette.accent} strokeWidth="5" />
-        <rect x="304" y="180" width="12" height="30" rx="3" fill={palette.accent} stroke={palette.primary} strokeWidth="2.5" />
-        {/* Diploma Card Hanging Below */}
-        <rect x="90" y="175" width="240" height="260" rx="20" fill="#ffffff" stroke={palette.primary} strokeWidth="6" />
-        {/* Ribbon Seal Badge */}
-        <circle cx="210" cy="180" r="16" fill={palette.accent} stroke={palette.primary} strokeWidth="3" />
+        <ellipse cx="210" cy="95" rx="10" ry="7" fill={palette.accent} stroke={palette.primary} strokeWidth="3" />
+        {/* Hanging Tassel to right */}
+        <path d="M 210 95 Q 310 110 330 170" fill="none" stroke={palette.accent} strokeWidth="5" />
+        <rect x="324" y="170" width="12" height="28" rx="3" fill={palette.accent} stroke={palette.primary} strokeWidth="2.5" />
+        {/* Diploma Card Hanging Below - securely encapsulates both texts */}
+        <rect x="80" y="145" width="260" height="310" rx="20" fill="#ffffff" stroke={palette.primary} strokeWidth="6" />
+        {/* Header Ribbon across top of card */}
+        <rect x="80" y="145" width="260" height="38" rx="8" fill={palette.primary} />
+        {/* CTA Ribbon Button at bottom of card */}
+        <rect x="100" y="408" width="220" height="34" rx="17" fill={palette.accent} />
       </g>
     ),
   },
@@ -210,9 +220,10 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'School Bus Panel',
     description: 'A classic bright yellow school bus with QR displayed on the side.',
     viewBox: [450, 480],
-    slot: { x: 125, y: 95, width: 190, height: 190, cornerRadius: 14 },
+    slot: { x: 125, y: 105, width: 200, height: 200, cornerRadius: 14 },
     textSlots: [
-      { id: 'cta', x: 220, y: 310, defaultText: 'Scan Bus Schedule & Route', fontSize: 12, align: 'middle', fontWeight: 'bold' },
+      { id: 'header', x: 225, y: 84, defaultText: 'BUS ROUTE 42', fontSize: 11, align: 'middle', fontWeight: 'bold', color: '#fbbf24' },
+      { id: 'cta', x: 225, y: 340, defaultText: 'Scan Bus Schedule & Route', fontSize: 11.5, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#1c1917', secondary: '#f59e0b', accent: '#ef4444', background: '#fffbeb', ink: '#1c1917' },
     qrStyle: { dotsType: 'extra-rounded', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#1c1917', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -220,20 +231,24 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     renderSvgContent: (palette) => (
       <g>
         {/* Yellow Bus Body */}
-        <rect x="40" y="60" width="370" height="280" rx="26" fill="#f59e0b" stroke={palette.primary} strokeWidth="7" />
+        <rect x="35" y="55" width="380" height="280" rx="26" fill="#f59e0b" stroke={palette.primary} strokeWidth="7" />
+        {/* Destination Sign Box on Roof */}
+        <rect x="125" y="66" width="200" height="26" rx="6" fill="#1c1917" stroke={palette.primary} strokeWidth="2" />
         {/* Black Guard Stripes */}
-        <line x1="40" y1="180" x2="410" y2="180" stroke={palette.primary} strokeWidth="7" />
-        <line x1="40" y1="210" x2="410" y2="210" stroke={palette.primary} strokeWidth="7" />
+        <line x1="35" y1="180" x2="415" y2="180" stroke={palette.primary} strokeWidth="7" />
+        <line x1="35" y1="210" x2="415" y2="210" stroke={palette.primary} strokeWidth="7" />
         {/* Bus Front Windows */}
-        <rect x="55" y="75" width="45" height="50" rx="8" fill="#e0f2fe" stroke={palette.primary} strokeWidth="4" />
-        <rect x="350" y="75" width="45" height="50" rx="8" fill="#e0f2fe" stroke={palette.primary} strokeWidth="4" />
-        {/* Wheels */}
-        <circle cx="110" cy="340" r="40" fill="#1c1917" stroke={palette.primary} strokeWidth="6" />
-        <circle cx="110" cy="340" r="18" fill="#94a3b8" />
-        <circle cx="340" cy="340" r="40" fill="#1c1917" stroke={palette.primary} strokeWidth="6" />
-        <circle cx="340" cy="340" r="18" fill="#94a3b8" />
+        <rect x="50" y="75" width="45" height="50" rx="8" fill="#e0f2fe" stroke={palette.primary} strokeWidth="4" />
+        <rect x="355" y="75" width="45" height="50" rx="8" fill="#e0f2fe" stroke={palette.primary} strokeWidth="4" />
         {/* Center White Board for QR */}
-        <rect x="110" y="80" width="220" height="220" rx="18" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        <rect x="115" y="95" width="220" height="220" rx="18" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        {/* Wheels positioned cleanly below */}
+        <circle cx="100" cy="335" r="38" fill="#1c1917" stroke={palette.primary} strokeWidth="6" />
+        <circle cx="100" cy="335" r="16" fill="#94a3b8" />
+        <circle cx="350" cy="335" r="38" fill="#1c1917" stroke={palette.primary} strokeWidth="6" />
+        <circle cx="350" cy="335" r="16" fill="#94a3b8" />
+        {/* Heavy Bumper Pill Banner for CTA (guarantees zero overlap with wheels) */}
+        <rect x="110" y="322" width="230" height="32" rx="16" fill="#1c1917" stroke="#ffffff" strokeWidth="2.5" />
       </g>
     ),
   },
@@ -244,10 +259,10 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Classroom Chalkboard',
     description: 'Wooden easel chalkboard with white chalk sketch framing.',
     viewBox: [420, 500],
-    slot: { x: 110, y: 95, width: 200, height: 200, cornerRadius: 12 },
+    slot: { x: 110, y: 100, width: 200, height: 200, cornerRadius: 12 },
     textSlots: [
-      { id: 'header', x: 210, y: 65, defaultText: 'TODAY’S LESSON', fontSize: 13, align: 'middle', fontWeight: 'bold' },
-      { id: 'cta', x: 210, y: 325, defaultText: 'Scan for Homework ✏️', fontSize: 13, align: 'middle', fontWeight: 600 },
+      { id: 'header', x: 210, y: 80, defaultText: 'TODAY’S LESSON', fontSize: 13, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
+      { id: 'cta', x: 210, y: 340, defaultText: 'Scan for Homework ✏️', fontSize: 12.5, align: 'middle', fontWeight: 'bold', color: '#fef08a' },
     ],
     palette: { primary: '#1e293b', secondary: '#0f766e', accent: '#f59e0b', background: '#f0fdf4', ink: '#ffffff' },
     qrStyle: { dotsType: 'classy', cornersSquareType: 'square', cornersDotType: 'square', dotsColor: '#134e4a', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -258,15 +273,15 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
         <line x1="80" y1="360" x2="50" y2="470" stroke="#78350f" strokeWidth="12" strokeLinecap="round" />
         <line x1="340" y1="360" x2="370" y2="470" stroke="#78350f" strokeWidth="12" strokeLinecap="round" />
         {/* Wooden Frame */}
-        <rect x="50" y="40" width="320" height="340" rx="18" fill="#92400e" stroke="#451a03" strokeWidth="6" />
+        <rect x="50" y="35" width="320" height="350" rx="18" fill="#92400e" stroke="#451a03" strokeWidth="6" />
         {/* Slate Dark Green Board */}
-        <rect x="68" y="58" width="284" height="304" rx="10" fill="#064e3b" stroke="#042f2e" strokeWidth="3" />
+        <rect x="68" y="53" width="284" height="314" rx="10" fill="#064e3b" stroke="#042f2e" strokeWidth="3" />
         {/* Center White Clean Pad for QR Scannability */}
-        <rect x="95" y="80" width="230" height="230" rx="14" fill="#ffffff" stroke="#042f2e" strokeWidth="4" />
+        <rect x="98" y="90" width="224" height="220" rx="14" fill="#ffffff" stroke="#042f2e" strokeWidth="4" />
         {/* Chalk Stick & Wooden Chalk Tray */}
-        <rect x="90" y="362" width="240" height="14" rx="4" fill="#b45309" stroke="#451a03" strokeWidth="2.5" />
-        <rect x="130" y="356" width="30" height="7" rx="2" fill="#ffffff" />
-        <rect x="260" y="354" width="40" height="10" rx="3" fill="#38bdf8" />
+        <rect x="90" y="367" width="240" height="14" rx="4" fill="#b45309" stroke="#451a03" strokeWidth="2.5" />
+        <rect x="130" y="361" width="30" height="7" rx="2" fill="#ffffff" />
+        <rect x="260" y="359" width="40" height="10" rx="3" fill="#38bdf8" />
       </g>
     ),
   },
@@ -278,10 +293,10 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Pizzeria Delivery Box',
     description: 'Cardboard pizza box with retro pizzeria stamp.',
     viewBox: [420, 480],
-    slot: { x: 110, y: 110, width: 200, height: 200, cornerRadius: 16 },
+    slot: { x: 110, y: 105, width: 200, height: 200, cornerRadius: 16 },
     textSlots: [
-      { id: 'header', x: 210, y: 75, defaultText: '★ ARTISAN PIZZERIA ★', fontSize: 13, align: 'middle', fontWeight: 'bold' },
-      { id: 'cta', x: 210, y: 345, defaultText: 'Scan to Reorder Pizza 🍕', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'header', x: 210, y: 78, defaultText: '★ ARTISAN PIZZERIA ★', fontSize: 13, align: 'middle', fontWeight: 'bold', color: '#991b1b' },
+      { id: 'cta', x: 210, y: 350, defaultText: 'Scan to Reorder Pizza 🍕', fontSize: 12, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#78350f', secondary: '#b45309', accent: '#dc2626', background: '#fef3c7', ink: '#78350f' },
     qrStyle: { dotsType: 'rounded', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#991b1b', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -289,12 +304,14 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     renderSvgContent: (palette) => (
       <g>
         {/* Corrugated Kraft Box Body */}
-        <rect x="50" y="50" width="320" height="350" rx="22" fill="#d97706" opacity="0.3" stroke={palette.primary} strokeWidth="6" />
-        <rect x="60" y="60" width="300" height="330" rx="18" fill="#fef3c7" stroke={palette.primary} strokeWidth="4" />
+        <rect x="50" y="45" width="320" height="355" rx="22" fill="#d97706" opacity="0.3" stroke={palette.primary} strokeWidth="6" />
+        <rect x="60" y="55" width="300" height="335" rx="18" fill="#fef3c7" stroke={palette.primary} strokeWidth="4" />
         {/* Red Checkered Border Accent */}
-        <rect x="75" y="75" width="270" height="300" rx="14" fill="none" stroke="#dc2626" strokeWidth="3" strokeDasharray="8 8" />
+        <rect x="75" y="70" width="270" height="305" rx="14" fill="none" stroke="#dc2626" strokeWidth="3" strokeDasharray="8 8" />
         {/* Center Clean Card for QR */}
-        <rect x="95" y="95" width="230" height="230" rx="18" fill="#ffffff" stroke={palette.primary} strokeWidth="5" />
+        <rect x="95" y="90" width="230" height="230" rx="18" fill="#ffffff" stroke={palette.primary} strokeWidth="5" />
+        {/* CTA Red Pill Banner */}
+        <rect x="95" y="330" width="230" height="34" rx="17" fill={palette.accent} />
       </g>
     ),
   },
@@ -305,9 +322,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Diner Serving Tray',
     description: 'Fast-casual serving tray with checkered liner and order code.',
     viewBox: [420, 500],
-    slot: { x: 110, y: 120, width: 200, height: 200, cornerRadius: 16 },
+    slot: { x: 110, y: 115, width: 200, height: 200, cornerRadius: 16 },
     textSlots: [
-      { id: 'cta', x: 210, y: 355, defaultText: 'Scan for Secret Menu 🍔', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 210, y: 362, defaultText: 'Scan for Secret Menu 🍔', fontSize: 12.5, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#b91c1c', secondary: '#ef4444', accent: '#f59e0b', background: '#fef2f2', ink: '#991b1b' },
     qrStyle: { dotsType: 'extra-rounded', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#991b1b', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -319,7 +336,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
         {/* Checkered Liner Paper */}
         <rect x="60" y="70" width="300" height="340" rx="20" fill="#ffffff" stroke="#b91c1c" strokeWidth="3" strokeDasharray="10 10" />
         {/* Standing Menu Card for QR */}
-        <rect x="95" y="105" width="230" height="230" rx="18" fill="#ffffff" stroke="#991b1b" strokeWidth="5.5" />
+        <rect x="95" y="100" width="230" height="230" rx="18" fill="#ffffff" stroke="#991b1b" strokeWidth="5.5" />
+        {/* Bottom CTA Pill */}
+        <rect x="95" y="342" width="230" height="36" rx="18" fill="#7f1d1d" />
       </g>
     ),
   },
@@ -331,9 +350,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Kraft Shopping Tote',
     description: 'Boutique shopping tote bag with twisted rope handles.',
     viewBox: [400, 500],
-    slot: { x: 100, y: 175, width: 200, height: 200, cornerRadius: 16 },
+    slot: { x: 100, y: 170, width: 200, height: 200, cornerRadius: 16 },
     textSlots: [
-      { id: 'cta', x: 200, y: 415, defaultText: 'Scan for VIP Discount', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 200, y: 418, defaultText: 'Scan for VIP Discount', fontSize: 12.5, align: 'middle', fontWeight: 'bold', color: '#fef3c7' },
     ],
     palette: { primary: '#451a03', secondary: '#b45309', accent: '#d97706', background: '#fffbeb', ink: '#451a03' },
     qrStyle: { dotsType: 'rounded', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#451a03', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -341,14 +360,16 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     renderSvgContent: (palette) => (
       <g>
         {/* Rope Handles */}
-        <path d="M 140 130 C 140 30 260 30 260 130" fill="none" stroke="#78350f" strokeWidth="14" strokeLinecap="round" />
-        <path d="M 140 130 C 140 36 260 36 260 130" fill="none" stroke="#fef3c7" strokeWidth="4" strokeDasharray="6 6" strokeLinecap="round" />
+        <path d="M 140 120 C 140 25 260 25 260 120" fill="none" stroke="#78350f" strokeWidth="14" strokeLinecap="round" />
+        <path d="M 140 120 C 140 31 260 31 260 120" fill="none" stroke="#fef3c7" strokeWidth="4" strokeDasharray="6 6" strokeLinecap="round" />
         {/* Paper Bag Body */}
-        <polygon points="60,120 340,120 360,450 40,450" fill="#fde68a" stroke={palette.primary} strokeWidth="7" />
+        <polygon points="60,115 340,115 360,455 40,455" fill="#fde68a" stroke={palette.primary} strokeWidth="7" />
         {/* Bag Top Folded Lip */}
-        <rect x="55" y="120" width="290" height="24" rx="6" fill="#f59e0b" stroke={palette.primary} strokeWidth="4" />
+        <rect x="55" y="115" width="290" height="24" rx="6" fill="#f59e0b" stroke={palette.primary} strokeWidth="4" />
         {/* Center Label for QR */}
-        <rect x="85" y="160" width="230" height="230" rx="20" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        <rect x="85" y="155" width="230" height="230" rx="20" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        {/* CTA Dark Pill Banner */}
+        <rect x="95" y="398" width="210" height="34" rx="17" fill={palette.primary} />
       </g>
     ),
   },
@@ -359,9 +380,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Swing Price Tag',
     description: 'Apparel hang tag with brass eyelet and hanging twine string.',
     viewBox: [400, 520],
-    slot: { x: 100, y: 170, width: 200, height: 200, cornerRadius: 16, rotate: 3 },
+    slot: { x: 100, y: 165, width: 200, height: 200, cornerRadius: 16, rotate: 2 },
     textSlots: [
-      { id: 'cta', x: 200, y: 410, defaultText: 'Scan for Product Info', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 200, y: 405, defaultText: 'Scan for Product Info', fontSize: 12.5, align: 'middle', fontWeight: 'bold', color: '#ffffff', rotate: 2 },
     ],
     palette: { primary: '#1e293b', secondary: '#64748b', accent: '#f59e0b', background: '#f8fafc', ink: '#0f172a' },
     qrStyle: { dotsType: 'classy', cornersSquareType: 'dot', cornersDotType: 'dot', dotsColor: '#1e293b', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -369,15 +390,17 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     renderSvgContent: (palette) => (
       <g>
         {/* Twine String entering from top */}
-        <path d="M 190 0 C 160 50 220 80 200 120" fill="none" stroke="#94a3b8" strokeWidth="5" />
+        <path d="M 190 0 C 160 50 220 75 200 115" fill="none" stroke="#94a3b8" strokeWidth="5" />
         {/* Tag Body with Cut Corners at Top */}
-        <g transform="rotate(3 200 280)">
-          <polygon points="100,140 140,80 260,80 300,140 300,440 100,440" fill="#ffffff" stroke={palette.primary} strokeWidth="6" />
+        <g transform="rotate(2 200 280)">
+          <polygon points="100,135 140,75 260,75 300,135 300,445 100,445" fill="#ffffff" stroke={palette.primary} strokeWidth="6" />
           {/* Brass Eyelet Grommet */}
-          <circle cx="200" cy="115" r="14" fill="#f59e0b" stroke={palette.primary} strokeWidth="4" />
-          <circle cx="200" cy="115" r="7" fill="#ffffff" />
+          <circle cx="200" cy="110" r="14" fill="#f59e0b" stroke={palette.primary} strokeWidth="4" />
+          <circle cx="200" cy="110" r="7" fill="#ffffff" />
           {/* Inset border */}
-          <polygon points="108,145 145,90 255,90 292,145 292,430 108,430" fill="none" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="6 6" />
+          <polygon points="108,140 145,85 255,85 292,140 292,435 108,435" fill="none" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="6 6" />
+          {/* CTA Pill Banner inside tag */}
+          <rect x="95" y="384" width="210" height="34" rx="17" fill={palette.primary} />
         </g>
       </g>
     ),
@@ -389,9 +412,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Courier Cardboard Box',
     description: 'Cardboard package with packaging tape and shipping label.',
     viewBox: [420, 480],
-    slot: { x: 110, y: 120, width: 200, height: 200, cornerRadius: 14 },
+    slot: { x: 110, y: 115, width: 200, height: 200, cornerRadius: 14 },
     textSlots: [
-      { id: 'cta', x: 210, y: 350, defaultText: 'Track Shipment 📦', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 210, y: 360, defaultText: 'Track Shipment 📦', fontSize: 12.5, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#78350f', secondary: '#b45309', accent: '#0284c7', background: '#fef3c7', ink: '#78350f' },
     qrStyle: { dotsType: 'square', cornersSquareType: 'square', cornersDotType: 'square', dotsColor: '#451a03', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -399,13 +422,15 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     renderSvgContent: (palette) => (
       <g>
         {/* Cardboard Box Carton */}
-        <rect x="50" y="60" width="320" height="340" rx="16" fill="#d97706" opacity="0.4" stroke={palette.primary} strokeWidth="6" />
+        <rect x="50" y="55" width="320" height="350" rx="16" fill="#d97706" opacity="0.4" stroke={palette.primary} strokeWidth="6" />
         {/* Center Packaging Tape Band */}
-        <rect x="180" y="60" width="60" height="340" fill="#fde68a" stroke={palette.primary} strokeWidth="3" />
+        <rect x="180" y="55" width="60" height="350" fill="#fde68a" stroke={palette.primary} strokeWidth="3" />
         {/* Fragile Glass Icon on side */}
-        <path d="M 75 100 L 95 100 L 90 120 L 80 120 Z" fill="#b91c1c" />
+        <path d="M 75 95 L 95 95 L 90 115 L 80 115 Z" fill="#b91c1c" />
         {/* White Shipping Label for QR */}
-        <rect x="95" y="105" width="230" height="230" rx="16" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        <rect x="95" y="100" width="230" height="230" rx="16" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        {/* CTA Tape Pill */}
+        <rect x="95" y="340" width="230" height="34" rx="17" fill={palette.primary} />
       </g>
     ),
   },
@@ -417,10 +442,10 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'VIP Concert Ticket Stub',
     description: 'Vintage concert ticket stub with perforated tear-line.',
     viewBox: [420, 500],
-    slot: { x: 110, y: 140, width: 200, height: 200, cornerRadius: 14 },
+    slot: { x: 110, y: 135, width: 200, height: 200, cornerRadius: 14 },
     textSlots: [
-      { id: 'header', x: 210, y: 80, defaultText: '★ ADMIT ONE VIP ★', fontSize: 14, align: 'middle', fontWeight: 'bold' },
-      { id: 'cta', x: 210, y: 385, defaultText: 'Scan for Event Entry', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'header', x: 210, y: 82, defaultText: '★ ADMIT ONE VIP ★', fontSize: 13, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
+      { id: 'cta', x: 210, y: 382, defaultText: 'Scan for Event Entry', fontSize: 12.5, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#581c87', secondary: '#a855f7', accent: '#ec4899', background: '#faf5ff', ink: '#3b0764' },
     qrStyle: { dotsType: 'dots', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#581c87', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -437,7 +462,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
         {/* Top Header Tag */}
         <rect x="75" y="60" width="270" height="34" rx="10" fill={palette.primary} />
         {/* White Center Pass Card for QR */}
-        <rect x="95" y="125" width="230" height="230" rx="16" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        <rect x="95" y="120" width="230" height="230" rx="16" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        {/* CTA Bottom Pill */}
+        <rect x="95" y="362" width="230" height="34" rx="17" fill={palette.primary} />
       </g>
     ),
   },
@@ -448,9 +475,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Promo Megaphone',
     description: 'Bullhorn megaphone projecting out an energetic announcement.',
     viewBox: [440, 480],
-    slot: { x: 195, y: 110, width: 190, height: 190, cornerRadius: 18 },
+    slot: { x: 195, y: 105, width: 190, height: 190, cornerRadius: 18 },
     textSlots: [
-      { id: 'cta', x: 290, y: 335, defaultText: 'Scan for Special Offer 📢', fontSize: 12, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 290, y: 342, defaultText: 'Scan for Special Offer 📢', fontSize: 11.5, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#0f172a', secondary: '#ef4444', accent: '#f59e0b', background: '#fef2f2', ink: '#0f172a' },
     qrStyle: { dotsType: 'extra-rounded', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#b91c1c', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -464,7 +491,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
         {/* Sound Energy Rays */}
         <path d="M 165 140 Q 185 140 185 200 Q 185 260 165 260" fill="none" stroke="#f59e0b" strokeWidth="6" strokeLinecap="round" />
         {/* Announcement Speech Card for QR */}
-        <rect x="180" y="95" width="220" height="220" rx="22" fill="#ffffff" stroke={palette.primary} strokeWidth="6" />
+        <rect x="180" y="90" width="220" height="220" rx="22" fill="#ffffff" stroke={palette.primary} strokeWidth="6" />
+        {/* CTA Pill Banner */}
+        <rect x="180" y="322" width="220" height="34" rx="17" fill={palette.primary} />
       </g>
     ),
   },
@@ -475,10 +504,10 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Taped Gig Poster',
     description: 'Underground concert poster taped with masking tape corners.',
     viewBox: [400, 500],
-    slot: { x: 100, y: 130, width: 200, height: 200, cornerRadius: 14 },
+    slot: { x: 100, y: 125, width: 200, height: 200, cornerRadius: 14 },
     textSlots: [
-      { id: 'header', x: 200, y: 90, defaultText: 'LIVE MUSIC FESTIVAL', fontSize: 13, align: 'middle', fontWeight: 'bold' },
-      { id: 'cta', x: 200, y: 375, defaultText: 'Scan for Lineup & Tickets', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'header', x: 200, y: 92, defaultText: 'LIVE MUSIC FESTIVAL', fontSize: 13, align: 'middle', fontWeight: 'bold', color: '#18181b' },
+      { id: 'cta', x: 200, y: 380, defaultText: 'Scan for Lineup & Tickets', fontSize: 12, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#18181b', secondary: '#dc2626', accent: '#f59e0b', background: '#fafafa', ink: '#18181b' },
     qrStyle: { dotsType: 'square', cornersSquareType: 'square', cornersDotType: 'square', dotsColor: '#18181b', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -493,7 +522,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
         <polygon points="45,395 80,430 60,450 25,415" fill="#fde68a" stroke={palette.primary} strokeWidth="3" />
         <polygon points="340,390 375,425 355,445 320,410" fill="#fde68a" stroke={palette.primary} strokeWidth="3" />
         {/* Poster Inner Dark Block for QR */}
-        <rect x="85" y="115" width="230" height="230" rx="16" fill="#ffffff" stroke={palette.primary} strokeWidth="4" />
+        <rect x="85" y="110" width="230" height="230" rx="16" fill="#ffffff" stroke={palette.primary} strokeWidth="4" />
+        {/* Red CTA Pill Button */}
+        <rect x="90" y="360" width="220" height="34" rx="17" fill={palette.secondary} />
       </g>
     ),
   },
@@ -504,9 +535,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Highway Billboard',
     description: 'Outdoor advertising billboard with steel posts and spotlights.',
     viewBox: [440, 480],
-    slot: { x: 120, y: 75, width: 200, height: 200, cornerRadius: 10 },
+    slot: { x: 120, y: 70, width: 200, height: 200, cornerRadius: 10 },
     textSlots: [
-      { id: 'cta', x: 220, y: 310, defaultText: 'Scan Billboard Campaign', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 220, y: 305, defaultText: 'Scan Billboard Campaign', fontSize: 12, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#0f172a', secondary: '#334155', accent: '#3b82f6', background: '#f8fafc', ink: '#0f172a' },
     qrStyle: { dotsType: 'rounded', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#0f172a', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -517,12 +548,14 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
         <rect x="130" y="330" width="18" height="130" fill="#64748b" stroke={palette.primary} strokeWidth="5" />
         <rect x="290" y="330" width="18" height="130" fill="#64748b" stroke={palette.primary} strokeWidth="5" />
         {/* Billboard Board Frame */}
-        <rect x="50" y="40" width="340" height="290" rx="14" fill="#e2e8f0" stroke={palette.primary} strokeWidth="7" />
+        <rect x="50" y="38" width="340" height="294" rx="14" fill="#e2e8f0" stroke={palette.primary} strokeWidth="7" />
         {/* Top Spotlight Mounts */}
-        <circle cx="120" cy="30" r="10" fill="#f59e0b" stroke={palette.primary} strokeWidth="3" />
-        <circle cx="320" cy="30" r="10" fill="#f59e0b" stroke={palette.primary} strokeWidth="3" />
+        <circle cx="120" cy="28" r="10" fill="#f59e0b" stroke={palette.primary} strokeWidth="3" />
+        <circle cx="320" cy="28" r="10" fill="#f59e0b" stroke={palette.primary} strokeWidth="3" />
         {/* White Center Canvas for QR */}
-        <rect x="105" y="60" width="230" height="230" rx="12" fill="#ffffff" stroke={palette.primary} strokeWidth="4.5" />
+        <rect x="105" y="55" width="230" height="230" rx="12" fill="#ffffff" stroke={palette.primary} strokeWidth="4.5" />
+        {/* CTA Dark Banner */}
+        <rect x="105" y="288" width="230" height="30" rx="15" fill={palette.primary} />
       </g>
     ),
   },
@@ -534,12 +567,12 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Smartphone Screen',
     description: 'Modern smartphone mockup displaying the QR on the mobile screen.',
     viewBox: [400, 520],
-    slot: { x: 100, y: 130, width: 200, height: 200, cornerRadius: 20 },
+    slot: { x: 100, y: 125, width: 200, height: 200, cornerRadius: 20 },
     textSlots: [
-      { id: 'header', x: 200, y: 95, defaultText: '@your_channel', fontSize: 13, align: 'middle', fontWeight: 'bold' },
-      { id: 'cta', x: 200, y: 380, defaultText: 'Tap or Scan to Follow 📱', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'header', x: 200, y: 98, defaultText: '@your_channel', fontSize: 13, align: 'middle', fontWeight: 'bold', color: '#09090b' },
+      { id: 'cta', x: 200, y: 382, defaultText: 'Tap or Scan to Follow 📱', fontSize: 12, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
-    palette: { primary: '#09090b', secondary: '#27272a', accent: '#ec4899', background: '#f4f4f5', ink: '#ffffff' },
+    palette: { primary: '#09090b', secondary: '#27272a', accent: '#ec4899', background: '#f4f4f5', ink: '#09090b' },
     qrStyle: { dotsType: 'rounded', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#09090b', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
     animation: 'bounce',
     renderSvgContent: (palette) => (
@@ -551,7 +584,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
         {/* Dynamic Island / Top Camera Notch */}
         <rect x="160" y="52" width="80" height="18" rx="9" fill="#09090b" />
         {/* Center QR Inset */}
-        <rect x="90" y="120" width="220" height="220" rx="22" fill="#ffffff" stroke="#e4e4e7" strokeWidth="3" />
+        <rect x="90" y="115" width="220" height="220" rx="22" fill="#ffffff" stroke="#e4e4e7" strokeWidth="3" />
+        {/* Dark Follow Button on screen */}
+        <rect x="95" y="360" width="210" height="38" rx="19" fill="#09090b" />
         {/* Bottom Home Indicator Bar */}
         <rect x="155" y="440" width="90" height="5" rx="2.5" fill="#09090b" />
       </g>
@@ -564,9 +599,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Instant Polaroid Photo',
     description: 'Vintage instant photo print with handwritten marker caption.',
     viewBox: [400, 500],
-    slot: { x: 100, y: 95, width: 200, height: 200, cornerRadius: 8, rotate: -2 },
+    slot: { x: 100, y: 90, width: 200, height: 200, cornerRadius: 8, rotate: -2 },
     textSlots: [
-      { id: 'cta', x: 200, y: 375, defaultText: 'Scan Our Memories ✨', fontSize: 14, align: 'middle', fontWeight: 600 },
+      { id: 'cta', x: 200, y: 365, defaultText: 'Scan Our Memories ✨', fontSize: 13.5, align: 'middle', fontWeight: 'bold', color: '#1c1917', rotate: -2 },
     ],
     palette: { primary: '#1c1917', secondary: '#78716c', accent: '#f43f5e', background: '#fafaf9', ink: '#1c1917' },
     qrStyle: { dotsType: 'classy-rounded', cornersSquareType: 'square', cornersDotType: 'dot', dotsColor: '#1c1917', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -575,11 +610,11 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
       <g>
         <g transform="rotate(-2 200 240)">
           {/* Polaroid Thick White Photo Paper */}
-          <rect x="65" y="55" width="270" height="360" rx="14" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+          <rect x="65" y="50" width="270" height="365" rx="14" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
           {/* Square Photo Window for QR */}
-          <rect x="88" y="80" width="224" height="224" rx="8" fill="#f5f5f4" stroke={palette.primary} strokeWidth="3" />
+          <rect x="88" y="75" width="224" height="224" rx="8" fill="#f5f5f4" stroke={palette.primary} strokeWidth="3" />
           {/* Bottom Marker Underline */}
-          <line x1="120" y1="390" x2="280" y2="390" stroke={palette.accent} strokeWidth="3" strokeLinecap="round" opacity="0.6" />
+          <line x1="120" y1="382" x2="280" y2="382" stroke={palette.accent} strokeWidth="3" strokeLinecap="round" opacity="0.6" />
         </g>
       </g>
     ),
@@ -591,9 +626,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Comic Speech Balloon',
     description: 'Pop-art comic book speech balloon with pointer tail.',
     viewBox: [420, 480],
-    slot: { x: 110, y: 95, width: 200, height: 200, cornerRadius: 26 },
+    slot: { x: 110, y: 90, width: 200, height: 200, cornerRadius: 26 },
     textSlots: [
-      { id: 'cta', x: 210, y: 335, defaultText: 'Join the Discussion! 💬', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 210, y: 335, defaultText: 'Join the Discussion! 💬', fontSize: 13, align: 'middle', fontWeight: 'bold', color: '#1e40af' },
     ],
     palette: { primary: '#0f172a', secondary: '#3b82f6', accent: '#fbbf24', background: '#eff6ff', ink: '#0f172a' },
     qrStyle: { dotsType: 'dots', cornersSquareType: 'dot', cornersDotType: 'dot', dotsColor: '#1e40af', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -602,15 +637,15 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
       <g>
         {/* Speech Bubble Outline and Pointer Tail */}
         <path
-          d="M 80 60 L 340 60 Q 370 60 370 90 L 370 330 Q 370 360 340 360 L 170 360 L 90 430 L 110 360 L 80 360 Q 50 360 50 330 L 50 90 Q 50 60 80 60 Z"
+          d="M 80 55 L 340 55 Q 370 55 370 85 L 370 330 Q 370 360 340 360 L 170 360 L 90 430 L 110 360 L 80 360 Q 50 360 50 330 L 50 85 Q 50 55 80 55 Z"
           fill="#ffffff"
           stroke={palette.primary}
           strokeWidth="7"
         />
         {/* Halftone Accent Dots in corner */}
-        <circle cx="340" cy="85" r="4" fill={palette.accent} />
-        <circle cx="355" cy="85" r="4" fill={palette.accent} />
-        <circle cx="340" cy="100" r="4" fill={palette.accent} />
+        <circle cx="340" cy="80" r="4" fill={palette.accent} />
+        <circle cx="355" cy="80" r="4" fill={palette.accent} />
+        <circle cx="340" cy="95" r="4" fill={palette.accent} />
       </g>
     ),
   },
@@ -621,9 +656,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Loved Creator Heart',
     description: 'A 3D heart crest badge with ribbon banner.',
     viewBox: [420, 500],
-    slot: { x: 110, y: 140, width: 200, height: 200, cornerRadius: 20 },
+    slot: { x: 110, y: 135, width: 200, height: 200, cornerRadius: 20 },
     textSlots: [
-      { id: 'cta', x: 210, y: 395, defaultText: 'Scan with Love ❤️', fontSize: 14, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 210, y: 395, defaultText: 'Scan with Love ❤️', fontSize: 13, align: 'middle', fontWeight: 'bold', color: '#881337' },
     ],
     palette: { primary: '#9f1239', secondary: '#f43f5e', accent: '#fb7185', background: '#fff1f2', ink: '#881337' },
     qrStyle: { dotsType: 'extra-rounded', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#be123c', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -632,13 +667,15 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
       <g>
         {/* Heart Crest Silhouette */}
         <path
-          d="M 210 110 C 170 40 80 60 80 150 C 80 250 210 340 210 340 C 210 340 340 250 340 150 C 340 60 250 40 210 110 Z"
+          d="M 210 105 C 170 35 80 55 80 145 C 80 245 210 335 210 335 C 210 335 340 245 340 145 C 340 55 250 35 210 105 Z"
           fill="#f43f5e"
           stroke={palette.primary}
           strokeWidth="7"
         />
         {/* Clean Center Card for QR */}
-        <rect x="95" y="125" width="230" height="230" rx="22" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        <rect x="95" y="120" width="230" height="230" rx="22" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        {/* Ribbon banner across bottom */}
+        <rect x="90" y="372" width="240" height="36" rx="18" fill="#ffffff" stroke={palette.primary} strokeWidth="3" />
       </g>
     ),
   },
@@ -650,10 +687,10 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Vintage Luggage Tag',
     description: 'Classic leather travel baggage tag with strap and buckle.',
     viewBox: [400, 520],
-    slot: { x: 100, y: 170, width: 200, height: 200, cornerRadius: 18, rotate: -2 },
+    slot: { x: 100, y: 165, width: 200, height: 200, cornerRadius: 18, rotate: -2 },
     textSlots: [
-      { id: 'header', x: 200, y: 140, defaultText: 'BON VOYAGE', fontSize: 13, align: 'middle', fontWeight: 'bold' },
-      { id: 'cta', x: 200, y: 410, defaultText: 'Scan for Flight & Hotel ✈️', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'header', x: 200, y: 140, defaultText: 'BON VOYAGE', fontSize: 12.5, align: 'middle', fontWeight: 'bold', color: '#78350f', rotate: -2 },
+      { id: 'cta', x: 200, y: 405, defaultText: 'Scan for Flight & Hotel ✈️', fontSize: 11.5, align: 'middle', fontWeight: 'bold', color: '#ffffff', rotate: -2 },
     ],
     palette: { primary: '#1c1917', secondary: '#78350f', accent: '#f59e0b', background: '#fffbeb', ink: '#1c1917' },
     qrStyle: { dotsType: 'classy', cornersSquareType: 'square', cornersDotType: 'dot', dotsColor: '#1c1917', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -661,16 +698,18 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     renderSvgContent: (palette) => (
       <g>
         {/* Leather Buckle Loop at Top */}
-        <path d="M 180 20 L 180 100 L 220 100 L 220 20" fill="none" stroke="#78350f" strokeWidth="16" strokeLinecap="round" />
-        <rect x="185" y="55" width="30" height="20" rx="4" fill="#f59e0b" stroke={palette.primary} strokeWidth="3" />
+        <path d="M 180 15 L 180 95 L 220 95 L 220 15" fill="none" stroke="#78350f" strokeWidth="16" strokeLinecap="round" />
+        <rect x="185" y="50" width="30" height="20" rx="4" fill="#f59e0b" stroke={palette.primary} strokeWidth="3" />
         {/* Tag Body */}
         <g transform="rotate(-2 200 280)">
-          <rect x="75" y="100" width="250" height="350" rx="28" fill="#fef3c7" stroke={palette.primary} strokeWidth="7" />
+          <rect x="75" y="95" width="250" height="345" rx="28" fill="#fef3c7" stroke={palette.primary} strokeWidth="7" />
           {/* Top Grommet Hole */}
-          <circle cx="200" cy="120" r="12" fill="#d97706" stroke={palette.primary} strokeWidth="3.5" />
-          <circle cx="200" cy="120" r="6" fill="#ffffff" />
+          <circle cx="200" cy="115" r="12" fill="#d97706" stroke={palette.primary} strokeWidth="3.5" />
+          <circle cx="200" cy="115" r="6" fill="#ffffff" />
           {/* Card for QR */}
-          <rect x="90" y="155" width="220" height="220" rx="18" fill="#ffffff" stroke={palette.primary} strokeWidth="5" />
+          <rect x="90" y="150" width="220" height="220" rx="18" fill="#ffffff" stroke={palette.primary} strokeWidth="5" />
+          {/* CTA Pill Banner */}
+          <rect x="90" y="384" width="220" height="34" rx="17" fill={palette.primary} />
         </g>
       </g>
     ),
@@ -682,10 +721,10 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Hotel Door Hanger',
     description: 'Do Not Disturb door handle hanger for hotel guest services.',
     viewBox: [400, 520],
-    slot: { x: 100, y: 190, width: 200, height: 200, cornerRadius: 18 },
+    slot: { x: 100, y: 185, width: 200, height: 200, cornerRadius: 18 },
     textSlots: [
-      { id: 'header', x: 200, y: 160, defaultText: 'ROOM CONCIERGE', fontSize: 13, align: 'middle', fontWeight: 'bold' },
-      { id: 'cta', x: 200, y: 430, defaultText: 'Scan for Room Service 🛎️', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'header', x: 200, y: 164, defaultText: 'ROOM CONCIERGE', fontSize: 12, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
+      { id: 'cta', x: 200, y: 425, defaultText: 'Scan for Room Service 🛎️', fontSize: 12, align: 'middle', fontWeight: 'bold', color: '#1e1b4b' },
     ],
     palette: { primary: '#1e1b4b', secondary: '#312e81', accent: '#eab308', background: '#e0e7ff', ink: '#1e1b4b' },
     qrStyle: { dotsType: 'classy-rounded', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#1e1b4b', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -712,6 +751,8 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
         />
         {/* Header Ribbon */}
         <rect x="95" y="145" width="210" height="28" rx="8" fill={palette.primary} />
+        {/* CTA Gold Pill Banner */}
+        <rect x="95" y="405" width="210" height="34" rx="17" fill={palette.accent} />
       </g>
     ),
   },
@@ -722,10 +763,10 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Airline Boarding Pass',
     description: 'Flight airline boarding pass with barcode and gate details.',
     viewBox: [440, 480],
-    slot: { x: 215, y: 110, width: 185, height: 185, cornerRadius: 12 },
+    slot: { x: 215, y: 105, width: 185, height: 185, cornerRadius: 12 },
     textSlots: [
-      { id: 'header', x: 125, y: 140, defaultText: 'FLIGHT 804', fontSize: 13, align: 'middle', fontWeight: 'bold' },
-      { id: 'cta', x: 308, y: 330, defaultText: 'Scan Mobile Gate Pass', fontSize: 12, align: 'middle', fontWeight: 'bold' },
+      { id: 'header', x: 125, y: 140, defaultText: 'FLIGHT 804', fontSize: 13, align: 'middle', fontWeight: 'bold', color: '#0369a1' },
+      { id: 'cta', x: 308, y: 325, defaultText: 'Scan Mobile Gate Pass', fontSize: 11, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#0369a1', secondary: '#0284c7', accent: '#f59e0b', background: '#f0f9ff', ink: '#0c4a6e' },
     qrStyle: { dotsType: 'rounded', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#0369a1', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -733,9 +774,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     renderSvgContent: (palette) => (
       <g>
         {/* Boarding Pass Body */}
-        <rect x="40" y="70" width="360" height="310" rx="20" fill="#ffffff" stroke={palette.primary} strokeWidth="6" />
+        <rect x="40" y="65" width="360" height="315" rx="20" fill="#ffffff" stroke={palette.primary} strokeWidth="6" />
         {/* Perforated Stub Divider */}
-        <line x1="200" y1="70" x2="200" y2="380" stroke="#94a3b8" strokeWidth="3" strokeDasharray="6 6" />
+        <line x1="200" y1="65" x2="200" y2="380" stroke="#94a3b8" strokeWidth="3" strokeDasharray="6 6" />
         {/* Airplane Icon */}
         <path d="M 125 180 L 110 200 L 125 210 L 140 200 Z" fill={palette.primary} />
         {/* Left Stub Barcode Mockup */}
@@ -744,6 +785,8 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
         <line x1="85" y1="260" x2="85" y2="320" stroke={palette.primary} strokeWidth="6" />
         <line x1="100" y1="260" x2="100" y2="320" stroke={palette.primary} strokeWidth="3" />
         <line x1="115" y1="260" x2="115" y2="320" stroke={palette.primary} strokeWidth="5" />
+        {/* CTA Blue Pill Button */}
+        <rect x="215" y="305" width="185" height="32" rx="16" fill={palette.primary} />
       </g>
     ),
   },
@@ -756,7 +799,7 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     viewBox: [420, 500],
     slot: { x: 110, y: 110, width: 200, height: 200, cornerRadius: 26 },
     textSlots: [
-      { id: 'cta', x: 210, y: 350, defaultText: 'Scan for Directions 📍', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 210, y: 350, defaultText: 'Scan for Directions 📍', fontSize: 12.5, align: 'middle', fontWeight: 'bold', color: '#991b1b' },
     ],
     palette: { primary: '#b91c1c', secondary: '#ef4444', accent: '#f59e0b', background: '#fef2f2', ink: '#991b1b' },
     qrStyle: { dotsType: 'dots', cornersSquareType: 'dot', cornersDotType: 'dot', dotsColor: '#b91c1c', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -765,17 +808,19 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
       <g>
         {/* Map Pin Silhouette */}
         <path
-          d="M 210 40 
-             C 120 40 70 90 70 170 
-             C 70 270 210 450 210 450 
-             C 210 450 350 270 350 170 
-             C 350 90 300 40 210 40 Z"
+          d="M 210 35 
+             C 120 35 70 85 70 165 
+             C 70 265 210 445 210 445 
+             C 210 445 350 265 350 165 
+             C 350 85 300 35 210 35 Z"
           fill="#ef4444"
           stroke="#991b1b"
           strokeWidth="8"
         />
         {/* White Circular Center Plate for QR */}
-        <circle cx="210" cy="210" r="120" fill="#ffffff" stroke="#991b1b" strokeWidth="6" />
+        <circle cx="210" cy="205" r="120" fill="#ffffff" stroke="#991b1b" strokeWidth="6" />
+        {/* CTA Banner Pill */}
+        <rect x="100" y="328" width="220" height="34" rx="17" fill="#ffffff" stroke="#991b1b" strokeWidth="3" />
       </g>
     ),
   },
@@ -787,10 +832,10 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Clinic Medical Clipboard',
     description: 'Doctor clipboard with metal clip for patient check-in.',
     viewBox: [400, 500],
-    slot: { x: 100, y: 140, width: 200, height: 200, cornerRadius: 14 },
+    slot: { x: 100, y: 135, width: 200, height: 200, cornerRadius: 14 },
     textSlots: [
-      { id: 'header', x: 200, y: 115, defaultText: 'PATIENT CHECK-IN', fontSize: 13, align: 'middle', fontWeight: 'bold' },
-      { id: 'cta', x: 200, y: 385, defaultText: 'Scan for Health Portal 🩺', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'header', x: 200, y: 115, defaultText: 'PATIENT CHECK-IN', fontSize: 13, align: 'middle', fontWeight: 'bold', color: '#0f766e' },
+      { id: 'cta', x: 200, y: 382, defaultText: 'Scan for Health Portal 🩺', fontSize: 12, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#0f766e', secondary: '#14b8a6', accent: '#0284c7', background: '#f0fdfa', ink: '#115e59' },
     qrStyle: { dotsType: 'rounded', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#0f766e', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -805,7 +850,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
         <rect x="140" y="30" width="120" height="40" rx="8" fill="#94a3b8" stroke="#334155" strokeWidth="4" />
         <circle cx="200" cy="50" r="8" fill="#475569" />
         {/* Medical Cross Symbol */}
-        <polygon points="190,85 210,85 210,95 220,95 220,105 210,105 210,115 190,115 190,105 180,105 180,95 190,95" fill="#0f766e" />
+        <polygon points="190,80 210,80 210,90 220,90 220,100 210,100 210,110 190,110 190,100 180,100 180,90 190,90" fill="#0f766e" />
+        {/* CTA Teal Pill Banner */}
+        <rect x="95" y="362" width="210" height="32" rx="16" fill={palette.primary} />
       </g>
     ),
   },
@@ -816,9 +863,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Prescription Pill Bottle',
     description: 'Amber pharmacy prescription medicine bottle with white label.',
     viewBox: [400, 500],
-    slot: { x: 105, y: 155, width: 190, height: 190, cornerRadius: 12 },
+    slot: { x: 105, y: 145, width: 190, height: 190, cornerRadius: 12 },
     textSlots: [
-      { id: 'cta', x: 200, y: 395, defaultText: 'Scan for Dosage & Refills 💊', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 200, y: 366, defaultText: 'Scan for Dosage & Refills 💊', fontSize: 11.5, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#1e293b', secondary: '#ea580c', accent: '#0284c7', background: '#fff7ed', ink: '#1e293b' },
     qrStyle: { dotsType: 'square', cornersSquareType: 'square', cornersDotType: 'square', dotsColor: '#1e293b', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -826,16 +873,18 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     renderSvgContent: (palette) => (
       <g>
         {/* Childproof White Ribbed Cap */}
-        <rect x="110" y="40" width="180" height="45" rx="10" fill="#ffffff" stroke={palette.primary} strokeWidth="6" />
-        <line x1="140" y1="45" x2="140" y2="80" stroke="#cbd5e1" strokeWidth="3" />
-        <line x1="170" y1="45" x2="170" y2="80" stroke="#cbd5e1" strokeWidth="3" />
-        <line x1="200" y1="45" x2="200" y2="80" stroke="#cbd5e1" strokeWidth="3" />
-        <line x1="230" y1="45" x2="230" y2="80" stroke="#cbd5e1" strokeWidth="3" />
-        <line x1="260" y1="45" x2="260" y2="80" stroke="#cbd5e1" strokeWidth="3" />
+        <rect x="110" y="35" width="180" height="45" rx="10" fill="#ffffff" stroke={palette.primary} strokeWidth="6" />
+        <line x1="140" y1="40" x2="140" y2="75" stroke="#cbd5e1" strokeWidth="3" />
+        <line x1="170" y1="40" x2="170" y2="75" stroke="#cbd5e1" strokeWidth="3" />
+        <line x1="200" y1="40" x2="200" y2="75" stroke="#cbd5e1" strokeWidth="3" />
+        <line x1="230" y1="40" x2="230" y2="75" stroke="#cbd5e1" strokeWidth="3" />
+        <line x1="260" y1="40" x2="260" y2="75" stroke="#cbd5e1" strokeWidth="3" />
         {/* Amber Translucent Bottle Body */}
-        <rect x="80" y="85" width="240" height="360" rx="28" fill="#ea580c" opacity="0.6" stroke={palette.primary} strokeWidth="7" />
+        <rect x="80" y="80" width="240" height="365" rx="28" fill="#ea580c" opacity="0.6" stroke={palette.primary} strokeWidth="7" />
         {/* Pharmacy White Label for QR */}
-        <rect x="90" y="130" width="220" height="250" rx="16" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        <rect x="90" y="120" width="220" height="265" rx="16" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        {/* CTA Pill inside label */}
+        <rect x="100" y="348" width="200" height="30" rx="15" fill={palette.primary} />
       </g>
     ),
   },
@@ -846,9 +895,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Rolled Yoga Mat',
     description: 'Rolled fitness yoga mat with branded carry strap tag.',
     viewBox: [420, 480],
-    slot: { x: 110, y: 120, width: 200, height: 200, cornerRadius: 16 },
+    slot: { x: 110, y: 115, width: 200, height: 200, cornerRadius: 16 },
     textSlots: [
-      { id: 'cta', x: 210, y: 360, defaultText: 'Scan for Class Schedule 🧘', fontSize: 13, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 210, y: 362, defaultText: 'Scan for Class Schedule 🧘', fontSize: 12, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#4c1d95', secondary: '#7c3aed', accent: '#10b981', background: '#f5f3ff', ink: '#4c1d95' },
     qrStyle: { dotsType: 'classy-rounded', cornersSquareType: 'dot', cornersDotType: 'dot', dotsColor: '#4c1d95', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -863,7 +912,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
         <rect x="130" y="150" width="20" height="180" fill="#1e1b4b" />
         <rect x="290" y="150" width="20" height="180" fill="#1e1b4b" />
         {/* Center Studio Pass Card for QR */}
-        <rect x="95" y="105" width="230" height="230" rx="18" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        <rect x="95" y="100" width="230" height="230" rx="18" fill="#ffffff" stroke={palette.primary} strokeWidth="5.5" />
+        {/* CTA Purple Pill Banner */}
+        <rect x="100" y="344" width="220" height="30" rx="15" fill={palette.primary} />
       </g>
     ),
   },
@@ -874,9 +925,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Botanical Eco Leaf',
     description: 'Eco-friendly organic leaf emblem with wellness seal.',
     viewBox: [420, 500],
-    slot: { x: 110, y: 130, width: 200, height: 200, cornerRadius: 22 },
+    slot: { x: 110, y: 125, width: 200, height: 200, cornerRadius: 22 },
     textSlots: [
-      { id: 'cta', x: 210, y: 380, defaultText: 'Scan for Organic Certification 🌿', fontSize: 12, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 210, y: 382, defaultText: 'Scan for Organic Certification 🌿', fontSize: 11.5, align: 'middle', fontWeight: 'bold', color: '#064e3b' },
     ],
     palette: { primary: '#064e3b', secondary: '#059669', accent: '#10b981', background: '#ecfdf5', ink: '#064e3b' },
     qrStyle: { dotsType: 'rounded', cornersSquareType: 'extra-rounded', cornersDotType: 'dot', dotsColor: '#065f46', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -885,19 +936,21 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
       <g>
         {/* Organic Shield Crest */}
         <path
-          d="M 210 50 
-             C 120 70 70 120 70 230 
-             C 70 350 210 440 210 440 
-             C 210 440 350 350 350 230 
-             C 350 120 300 70 210 50 Z"
+          d="M 210 45 
+             C 120 65 70 115 70 225 
+             C 70 345 210 435 210 435 
+             C 210 435 350 345 350 225 
+             C 350 115 300 65 210 45 Z"
           fill="#059669"
           stroke="#064e3b"
           strokeWidth="7"
         />
         {/* Sprouting Leaf at Top */}
-        <path d="M 210 50 Q 240 20 270 40 Q 250 65 210 50 Z" fill="#34d399" stroke="#064e3b" strokeWidth="3" />
+        <path d="M 210 45 Q 240 15 270 35 Q 250 60 210 45 Z" fill="#34d399" stroke="#064e3b" strokeWidth="3" />
         {/* Center White Plate for QR */}
-        <rect x="95" y="115" width="230" height="230" rx="24" fill="#ffffff" stroke="#064e3b" strokeWidth="5.5" />
+        <rect x="95" y="110" width="230" height="230" rx="24" fill="#ffffff" stroke="#064e3b" strokeWidth="5.5" />
+        {/* CTA White Pill Banner */}
+        <rect x="95" y="362" width="230" height="32" rx="16" fill="#ffffff" stroke="#064e3b" strokeWidth="2.5" />
       </g>
     ),
   },
@@ -909,9 +962,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Optical Viewfinder HUD',
     description: 'Camera optical autofocus targeting brackets and grid.',
     viewBox: [400, 480],
-    slot: { x: 100, y: 100, width: 200, height: 200, cornerRadius: 10 },
+    slot: { x: 100, y: 95, width: 200, height: 200, cornerRadius: 10 },
     textSlots: [
-      { id: 'cta', x: 200, y: 345, defaultText: 'ALIGN CAMERA WITH CODE', fontSize: 12, align: 'middle', fontWeight: 'bold' },
+      { id: 'cta', x: 200, y: 348, defaultText: 'ALIGN CAMERA WITH CODE', fontSize: 11.5, align: 'middle', fontWeight: 'bold', color: '#ffffff' },
     ],
     palette: { primary: '#0f172a', secondary: '#38bdf8', accent: '#ef4444', background: '#ffffff', ink: '#0f172a' },
     qrStyle: { dotsType: 'square', cornersSquareType: 'square', cornersDotType: 'square', dotsColor: '#0f172a', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -919,15 +972,17 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     renderSvgContent: (palette) => (
       <g>
         {/* Camera HUD Corner Brackets */}
-        <path d="M 70 120 L 70 80 L 110 80" fill="none" stroke={palette.primary} strokeWidth="8" strokeLinecap="round" />
-        <path d="M 330 120 L 330 80 L 290 80" fill="none" stroke={palette.primary} strokeWidth="8" strokeLinecap="round" />
-        <path d="M 70 280 L 70 320 L 110 320" fill="none" stroke={palette.primary} strokeWidth="8" strokeLinecap="round" />
-        <path d="M 330 280 L 330 320 L 290 320" fill="none" stroke={palette.primary} strokeWidth="8" strokeLinecap="round" />
+        <path d="M 70 115 L 70 75 L 110 75" fill="none" stroke={palette.primary} strokeWidth="8" strokeLinecap="round" />
+        <path d="M 330 115 L 330 75 L 290 75" fill="none" stroke={palette.primary} strokeWidth="8" strokeLinecap="round" />
+        <path d="M 70 275 L 70 315 L 110 315" fill="none" stroke={palette.primary} strokeWidth="8" strokeLinecap="round" />
+        <path d="M 330 275 L 330 315 L 290 315" fill="none" stroke={palette.primary} strokeWidth="8" strokeLinecap="round" />
         {/* Center Crosshairs */}
-        <line x1="200" y1="65" x2="200" y2="85" stroke="#ef4444" strokeWidth="3" />
-        <line x1="200" y1="315" x2="200" y2="335" stroke="#ef4444" strokeWidth="3" />
+        <line x1="200" y1="60" x2="200" y2="80" stroke="#ef4444" strokeWidth="3" />
+        <line x1="200" y1="310" x2="200" y2="330" stroke="#ef4444" strokeWidth="3" />
         {/* Clean Center Screen for QR */}
-        <rect x="90" y="90" width="220" height="220" rx="14" fill="#ffffff" stroke="#cbd5e1" strokeWidth="2" />
+        <rect x="90" y="85" width="220" height="220" rx="14" fill="#ffffff" stroke="#cbd5e1" strokeWidth="2" />
+        {/* CTA Dark Pill Banner */}
+        <rect x="80" y="328" width="240" height="32" rx="16" fill={palette.primary} />
       </g>
     ),
   },
@@ -938,9 +993,9 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
     name: 'Torn Spiral Notebook',
     description: 'Ripped spiral notepad sheet with distressed perforated edge.',
     viewBox: [400, 500],
-    slot: { x: 100, y: 120, width: 200, height: 200, cornerRadius: 10 },
+    slot: { x: 100, y: 115, width: 200, height: 200, cornerRadius: 10 },
     textSlots: [
-      { id: 'cta', x: 200, y: 370, defaultText: 'Scan the Note 📝', fontSize: 13, align: 'middle', fontWeight: 600 },
+      { id: 'cta', x: 200, y: 368, defaultText: 'Scan the Note 📝', fontSize: 13, align: 'middle', fontWeight: 600, color: '#18181b' },
     ],
     palette: { primary: '#27272a', secondary: '#71717a', accent: '#3b82f6', background: '#f4f4f5', ink: '#18181b' },
     qrStyle: { dotsType: 'classy', cornersSquareType: 'square', cornersDotType: 'dot', dotsColor: '#27272a', backgroundColor: '#ffffff', errorCorrectionLevel: 'Q' },
@@ -949,19 +1004,19 @@ export const ADDITIONAL_SCENE_TEMPLATES: SceneTemplate[] = [
       <g>
         {/* Paper Sheet Body with Top Torn Edge */}
         <path
-          d="M 60 70 
-             Q 75 60 90 70 Q 105 80 120 70 Q 135 60 150 70 Q 165 80 180 70 Q 195 60 210 70 Q 225 80 240 70 Q 255 60 270 70 Q 285 80 300 70 Q 315 60 330 70 
-             L 340 430 L 60 430 Z"
+          d="M 60 65 
+             Q 75 55 90 65 Q 105 75 120 65 Q 135 55 150 65 Q 165 75 180 65 Q 195 55 210 65 Q 225 75 240 65 Q 255 55 270 65 Q 285 75 300 65 Q 315 55 330 65 
+             L 340 435 L 60 435 Z"
           fill="#ffffff"
           stroke={palette.primary}
           strokeWidth="5.5"
         />
         {/* Spiral Notebook Holes */}
-        <circle cx="85" cy="100" r="7" fill="#e4e4e7" stroke={palette.primary} strokeWidth="3" />
-        <circle cx="140" cy="100" r="7" fill="#e4e4e7" stroke={palette.primary} strokeWidth="3" />
-        <circle cx="195" cy="100" r="7" fill="#e4e4e7" stroke={palette.primary} strokeWidth="3" />
-        <circle cx="250" cy="100" r="7" fill="#e4e4e7" stroke={palette.primary} strokeWidth="3" />
-        <circle cx="305" cy="100" r="7" fill="#e4e4e7" stroke={palette.primary} strokeWidth="3" />
+        <circle cx="85" cy="95" r="7" fill="#e4e4e7" stroke={palette.primary} strokeWidth="3" />
+        <circle cx="140" cy="95" r="7" fill="#e4e4e7" stroke={palette.primary} strokeWidth="3" />
+        <circle cx="195" cy="95" r="7" fill="#e4e4e7" stroke={palette.primary} strokeWidth="3" />
+        <circle cx="250" cy="95" r="7" fill="#e4e4e7" stroke={palette.primary} strokeWidth="3" />
+        <circle cx="305" cy="95" r="7" fill="#e4e4e7" stroke={palette.primary} strokeWidth="3" />
         {/* Ruling Lines */}
         <line x1="75" y1="350" x2="325" y2="350" stroke="#93c5fd" strokeWidth="2" opacity="0.6" />
         <line x1="75" y1="390" x2="325" y2="390" stroke="#93c5fd" strokeWidth="2" opacity="0.6" />
