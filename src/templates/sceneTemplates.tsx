@@ -320,19 +320,6 @@ export const SCENE_TEMPLATES: SceneTemplate[] = [
         {/* Injected QR slot */}
         {qrSlot}
 
-        {/* Camera guidance text */}
-        <text
-          x="200"
-          y="353"
-          textAnchor="middle"
-          fontSize="9.5"
-          fontWeight="600"
-          fill="#64748b"
-          fontFamily="'Inter', sans-serif"
-        >
-          Point camera to open Google Maps
-        </text>
-
         {/* Stand Heavy Base Mount */}
         <rect x="50" y="365" width="300" height="24" rx="6" fill="#1e293b" stroke={palette.ink} strokeWidth="3.5" />
         <rect x="55" y="367" width="290" height="4" fill="#ffffff" opacity="0.2" />
