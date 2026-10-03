@@ -82,3 +82,154 @@
   animation-play-state: paused;
 }
 
+/* =========================================================================
+   Realistic 2D Animation Keyframes for Hero Banner
+   ========================================================================= */
+
+@keyframes steamWaft1 {
+  0% {
+    transform: translateY(0px) scaleX(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.75;
+  }
+  60% {
+    transform: translateY(-24px) scaleX(1.3) translateX(4px);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-44px) scaleX(1.7) translateX(-6px);
+    opacity: 0;
+  }
+}
+
+@keyframes steamWaft2 {
+  0% {
+    transform: translateY(0px) scaleX(1);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.65;
+  }
+  70% {
+    transform: translateY(-28px) scaleX(1.2) translateX(-5px);
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(-50px) scaleX(1.5) translateX(4px);
+    opacity: 0;
+  }
+}
+
+@keyframes laserScanSweep {
+  0% {
+    top: 8%;
+    opacity: 0.3;
+  }
+  50% {
+    top: 88%;
+    opacity: 1;
+  }
+  100% {
+    top: 8%;
+    opacity: 0.3;
+  }
+}
+
+@keyframes scanRadarPing {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@keyframes phoneHandheldFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  30% {
+    transform: translateY(-6px) rotate(0.8deg);
+  }
+  65% {
+    transform: translateY(4px) rotate(-0.6deg);
+  }
+}
+
+@keyframes phoneToastSlide {
+  0%, 15% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  25%, 75% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  85%, 100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
+
+@keyframes cardRevealSlide {
+  0%, 10% {
+    transform: translateY(0px);
+  }
+  40%, 75% {
+    transform: translateY(-38px);
+  }
+  95%, 100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes hudReticleSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-steam-1 {
+  animation: steamWaft1 3.2s ease-out infinite;
+}
+
+.animate-steam-2 {
+  animation: steamWaft2 3.8s ease-out 1s infinite;
+}
+
+.animate-laser-scan {
+  animation: laserScanSweep 2.2s ease-in-out infinite;
+}
+
+.animate-radar-ping {
+  animation: scanRadarPing 2.8s ease-out infinite;
+}
+
+.animate-phone-float {
+  animation: phoneHandheldFloat 6s ease-in-out infinite;
+}
+
+.animate-phone-toast {
+  animation: phoneToastSlide 4.8s ease-in-out infinite;
+}
+
+.animate-card-slide {
+  animation: cardRevealSlide 5.2s ease-in-out infinite;
+}
+
+.animate-hud-spin {
+  animation: hudReticleSpin 16s linear infinite;
+}
+
+
