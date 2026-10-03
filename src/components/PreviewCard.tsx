@@ -18,6 +18,7 @@ import { animateButtonPress } from '../lib/animeHelper';
 interface PreviewCardProps {
   template: SceneTemplate;
   qrSvgHtml: string;
+  encodedData?: string;
   textValues: Record<string, string>;
   setTextValues: React.Dispatch<React.SetStateAction<Record<string, string>>>;
   palette: ScenePalette;
@@ -33,6 +34,7 @@ interface PreviewCardProps {
 export const PreviewCard: React.FC<PreviewCardProps> = ({
   template,
   qrSvgHtml,
+  encodedData = 'https://qrify.app',
   textValues,
   setTextValues,
   palette,
@@ -73,7 +75,7 @@ export const PreviewCard: React.FC<PreviewCardProps> = ({
 
   const handleDownloadPdf = async (e: React.MouseEvent<HTMLButtonElement>) => {
     animateButtonPress(e.currentTarget);
-    const success = await downloadScenePdf(sceneContainerRef.current, template, 'https://qrify.app');
+    const success = await downloadScenePdf(sceneContainerRef.current, template, encodedData);
     if (success) {
       onShowToast('Downloaded print-ready PDF document', 'success');
     } else {
@@ -93,7 +95,7 @@ export const PreviewCard: React.FC<PreviewCardProps> = ({
 
   const handleShare = async (e: React.MouseEvent<HTMLButtonElement>) => {
     animateButtonPress(e.currentTarget);
-    const success = await shareQr('https://qrify.app', `Scan ${template.name}`);
+    const success = await shareQr(encodedData, `Scan ${template.name}`);
     if (success) {
       onShowToast('Share dialog opened or link copied', 'info');
     }

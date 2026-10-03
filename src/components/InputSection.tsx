@@ -197,6 +197,7 @@ export const InputSection: React.FC<InputSectionProps> = ({
                 type="text"
                 value={rawUrl}
                 onChange={(e) => setRawUrl(e.target.value)}
+                onBlur={updateEncoding}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     updateEncoding();

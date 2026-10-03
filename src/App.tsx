@@ -244,6 +244,7 @@ export const App: React.FC = () => {
             <PreviewCard
               template={currentTemplate}
               qrSvgHtml={qrSvgHtml}
+              encodedData={encodedData}
               textValues={textValues}
               setTextValues={setTextValues}
               palette={palette}

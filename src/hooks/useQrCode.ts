@@ -38,10 +38,10 @@ function generateFallbackSvg(data: string, ecLevel: 'L' | 'M' | 'Q' | 'H', color
 }
 
 export function useQrCode({ data, qrStyle, logoConfig, size = 280 }: UseQrCodeProps) {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const hiddenHostRef = useRef<HTMLDivElement | null>(null);
   const qrInstanceRef = useRef<QRCodeStyling | null>(null);
 
-  // Initialize with synchronous fallback SVG
+  // Initialize with synchronous fallback SVG using the current data
   const [qrSvgHtml, setQrSvgHtml] = useState<string>(() =>
     generateFallbackSvg(data, qrStyle.errorCorrectionLevel, qrStyle.dotsColor)
   );
@@ -74,50 +74,65 @@ export function useQrCode({ data, qrStyle, logoConfig, size = 280 }: UseQrCodePr
     };
   }, [data, qrStyle, logoConfig, size]);
 
-  // Extract SVG markup from hidden container
   const updateSvgMarkup = useCallback(() => {
-    if (!containerRef.current) return;
-    const svgEl = containerRef.current.querySelector('svg');
-    if (svgEl) {
+    if (!hiddenHostRef.current) return;
+    const svgEl = hiddenHostRef.current.querySelector('svg');
+    if (svgEl && svgEl.innerHTML) {
       setQrSvgHtml(svgEl.innerHTML);
     }
   }, []);
 
-  // Initial mount
+  // Initial mount: create and attach offscreen host container
   useEffect(() => {
-    if (!containerRef.current) return;
-    containerRef.current.innerHTML = '';
+    if (typeof document === 'undefined') return;
 
-    const qr = new QRCodeStyling(buildOptions());
-    qrInstanceRef.current = qr;
-    qr.append(containerRef.current);
+    const div = document.createElement('div');
+    div.style.cssText =
+      'position:fixed;left:-9999px;top:-9999px;width:280px;height:280px;overflow:hidden;opacity:0;pointer-events:none;';
+    div.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(div);
+    hiddenHostRef.current = div;
 
-    setTimeout(() => {
-      updateSvgMarkup();
-    }, 50);
+    try {
+      const qr = new QRCodeStyling(buildOptions());
+      qrInstanceRef.current = qr;
+      qr.append(div);
+
+      setTimeout(() => {
+        updateSvgMarkup();
+      }, 50);
+    } catch (e) {
+      console.warn('QRCodeStyling initialization error:', e);
+    }
 
     return () => {
-      if (containerRef.current) containerRef.current.innerHTML = '';
+      if (div.parentNode) {
+        div.parentNode.removeChild(div);
+      }
+      hiddenHostRef.current = null;
       qrInstanceRef.current = null;
     };
   }, []);
 
-  // Prop updates
+  // Prop updates: whenever data, qrStyle, or options change
   useEffect(() => {
-    if (!qrInstanceRef.current) return;
-    qrInstanceRef.current.update(buildOptions());
-
-    // Update synchronous markup immediately
+    // 1. Immediately update synchronous SVG so redirect target updates instantly with 0 latency
     setQrSvgHtml(generateFallbackSvg(data, qrStyle.errorCorrectionLevel, qrStyle.dotsColor));
 
-    // Then refine with styled SVG
-    setTimeout(() => {
-      updateSvgMarkup();
-    }, 40);
+    // 2. Refine with styled SVG from QRCodeStyling
+    if (qrInstanceRef.current && hiddenHostRef.current) {
+      try {
+        qrInstanceRef.current.update(buildOptions());
+        setTimeout(() => {
+          updateSvgMarkup();
+        }, 40);
+      } catch (e) {
+        console.warn('QRCodeStyling update error:', e);
+      }
+    }
   }, [buildOptions, data, qrStyle.errorCorrectionLevel, qrStyle.dotsColor, updateSvgMarkup]);
 
   return {
-    containerRef,
     qrInstance: qrInstanceRef.current,
     qrSvgHtml,
   };
